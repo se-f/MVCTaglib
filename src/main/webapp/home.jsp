@@ -1,7 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
-<%-- Get session attribute "notes" and use it as bean --%>
-<jsp:useBean id="notes" class="java.util.ArrayList" scope="session"/>
 
 
 <html>
@@ -29,7 +27,7 @@
     <ul class="list-group">
 
         <%--
-         For each item "todoItem" of the bean "notes", we're going to use a bean "todo"
+         For each item "todoItem" of the session attribute "notes", we're going to use a bean "todo"
         of type "ToDoBean" in which we're going set the propreties "content" and "isComplete" of the "todoItem"
          --%>
 
@@ -42,7 +40,8 @@
 
             <li class="list-group-item <%= todo.getIsComplete().equals("1") ? "bg-success text-white" : "" %>">
                 <div class="d-flex justify-content-between align-items-center">
-                        <%--Display the content of the note with getProperty--%>
+
+                        <%--Display the content of the note bean with getProperty--%>
                     <span><jsp:getProperty name="todo" property="content"/></span>
                     <div class="btn-group" role="group">
                         <button type="button" class="btn btn-success btn-sm">Complete</button>
